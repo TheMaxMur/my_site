@@ -1,0 +1,82 @@
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.image {
+  border-radius: 50%;
+}
+
+.header1 {
+  font-family: 'Righteous', cursive;
+  font-size: 5vw;
+  color: #ffffff;
+}
+
+.header2 {
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 1.4vw;
+  color: #ffffff;
+}
+
+.header3 {
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 2.2vw;
+  color: #ffffff;
+}
+
+.link1 {
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 2.8vw;
+  margin: 0px 5px 0px 5px;
+  transition: 0.5s;
+  color: #ffffff;
+}
+
+.link1:hover {
+  color: #00bfff;
+}
+
+@media screen and (max-width: 785px) {
+  .header1 {
+    font-size: 8vw;
+  }
+  .link1 {
+    font-size: 4vw;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  body {
+    text-align: center;
+  }
+  .header1 {
+    font-size: 9vw;
+  }
+  .header2 {
+    font-size: 2.5vw;
+  }
+  .link1 {
+    font-size: 5vw;
+  }
+}
+
+@media screen and (min-width: 1390px) {
+  .header2 {
+    font-size: 1.2vw;
+  }
+}
