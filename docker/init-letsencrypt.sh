@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(maxmur.info www.maxmur.info)
+domains=(maxmur.info)
 rsa_key_size=4096
 data_path="./data/certbot"
 email="muravjev.mak@yandex.ru" # Adding a valid address is strongly recommended
