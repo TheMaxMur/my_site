@@ -17,7 +17,7 @@ jobs:
       - name: Run nginx server
         run: |
                 apt update && apt install nginx wget -y 
-                cp -r my_site/maxmur /var/www/html
+                cp -r maxmur/* /var/www/html
                 service nginx start 
                 wget localhost
   CD:
