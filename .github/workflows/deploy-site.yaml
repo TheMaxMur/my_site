@@ -41,7 +41,7 @@ jobs:
 
       - name: Healthcheck container
         run: |
-          docker-compose up -d
+          docker-compose -f files/docker-compose.yaml up -d
           curl http://localhost
 
   deploy:
