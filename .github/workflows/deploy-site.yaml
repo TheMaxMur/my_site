@@ -56,10 +56,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run ansible role
-        uses: dawidd6/action-ansible-playbook@v2
-        with:
-          playbook: ./update.yaml
-          key: ${{ secrets.KEY }}
-          options: |
-            --inventory ./inventory/production/inventory.ini
-            --extra-vars sudo_password=${{ secrets.PROD_SUDO_PASSWORD }}
+        run: |
+          ansible-playbook -i ./inventory/production/inventory.ini \
+            --extra-vars "sudo_password=${{ secrets.PROD_SUDO_PASSWORD }}" \
+            ./update.yml
