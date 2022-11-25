@@ -1,1 +1,9 @@
 ---
+- name: Init and install project to server
+  hosts: frontend
+  roles:
+    - role: init_server
+    - role: deploy_project
+      become: true
+      vars:
+        - ansible_sudo_pass: "{{ sudo_password }}"

@@ -1,5 +1,5 @@
 ---
 - name: Init and install project to server
-  hosts: main-server
+  hosts: frontend
   roles:
     - role: init_server

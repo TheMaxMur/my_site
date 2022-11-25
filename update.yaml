@@ -1,6 +1,6 @@
 ---
 - name: Update project in servers
-  hosts: main-server
+  hosts: frontend
   roles:
     - role: deploy_project
       become: true
