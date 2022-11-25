@@ -58,7 +58,7 @@ jobs:
         uses: dawidd6/action-ansible-playbook@v2
         with:
           playbook: ./update.yaml
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.KEY }}
           options: |
             --inventory ./inventory/production/inventory.ini
             --extra-vars sudo_password=${{ secrets.PROD_SUDO_PASSWORD }}
