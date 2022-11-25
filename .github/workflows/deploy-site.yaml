@@ -41,6 +41,7 @@ jobs:
 
       - name: Healthcheck container
         run: |
+          docker network rm $(docker network ls -q)
           docker-compose -f files/docker-compose.yaml up -d
           curl http://localhost
 
