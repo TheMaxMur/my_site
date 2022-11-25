@@ -20,12 +20,12 @@ jobs:
 
       - name: Build image
         run: |
-          docker build -t maxmur/my_site:local -f files/Dockerfile/Nginx/Dockerfile .
+          docker build -t maxmur/my_site:local -f files/Dockerfiles/Nginx/Dockerfile .
           docker push maxmur/my_site:local
           ansible all -i "localhost," --connection=local \
             -m template -a "src=templates/default.conf.j2 dest=nginx.conf" \
             --extra-vars="@./inventory/production/group_vars/vars.yaml"
-          docker build -t maxmur/my_site:${{ github.sha }} -f files/Dockerfile/Nginx/Dockerfile .
+          docker build -t maxmur/my_site:${{ github.sha }} -f files/Dockerfiles/Nginx/Dockerfile .
           docker push maxmur/my_site:${{ github.sha }}
           docker tag maxmur/my_site:${{ github.sha }} maxmur/my_site:latest
           docker push maxmur/my_site:latest
