@@ -1,0 +1,7 @@
+---
+warn_list:
+    - command-instead-of-module
+    # - experimental
+    # - risky-shell-pipe
+    # - no-changed-when
+    # - no-free-form

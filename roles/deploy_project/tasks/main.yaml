@@ -1,0 +1,6 @@
+---
+- name: Copy files to server
+  ansible.builtin.include_tasks: "copy_files.yaml"
+
+- name: Run updated project
+  ansible.builtin.include_tasks: "docker_run.yaml"

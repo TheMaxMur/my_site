@@ -1,0 +1,8 @@
+---
+- name: Update project in servers
+  hosts: main-server
+  roles:
+    - role: deploy_project
+      become: true
+      vars:
+        - ansible_sudo_pass: "{{ sudo_password }}"

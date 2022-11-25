@@ -1,0 +1,12 @@
+---
+- name: Copy docker compose file
+  ansible.builtin.copy:
+    src: "docker-compose.yaml"
+    dest: "{{ server_folder }}"
+    mode: "0600"
+
+- name: Create init-letsencrypt.sh file from template
+  ansible.builtin.template:
+    src: "init-letsencrypt.sh.j2"
+    dest: "{{ server_folder }}/init-letsencrypt.sh"
+    mode: "0744"

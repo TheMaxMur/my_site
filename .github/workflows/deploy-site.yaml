@@ -1,0 +1,63 @@
+name: ci-cd-MaxMur-Site
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download source code
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build image
+        run: |
+          docker build -t maxmur/my_site:local -f files/Dockerfile/Nginx/Dockerfile .
+          docker push maxmur/my_site:local
+          ansible all -i "localhost," --connection=local \
+            -m template -a "src=templates/default.conf.j2 dest=nginx.conf" \
+            --extra-vars="@./inventory/production/group_vars/vars.yaml"
+          docker build -t maxmur/my_site:${{ github.sha }} -f files/Dockerfile/Nginx/Dockerfile .
+          docker push maxmur/my_site:${{ github.sha }}
+          docker tag maxmur/my_site:${{ github.sha }} maxmur/my_site:latest
+          docker push maxmur/my_site:latest
+
+  test:
+    runs-on: ubuntu-latest
+
+    needs: [build]
+
+    steps:
+      - name: Download source code
+        uses: actions/checkout@v2
+
+      - name: Healthcheck container
+        run: |
+          docker-compose up -d
+          curl http://localhost
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    needs: [test]
+    
+    steps:
+      - name: Download source code
+        uses: actions/checkout@v2
+
+      - name: Run ansible role
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: ./update.yaml
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          options: |
+            --inventory ./inventory/production/inventory.ini
+            --extra-vars sudo_password=${{ secrets.PROD_SUDO_PASSWORD }}

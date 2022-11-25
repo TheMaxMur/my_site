@@ -1,0 +1,14 @@
+---
+- name: Install dependencies
+  ansible.builtin.apt:
+    update_cache: true
+    pkg:
+      - curl
+      - gnupg
+      - ca-certificates
+      - lsb-release
+      - apt-transport-https
+      - software-properties-common
+      - jq
+      - docker.io
+      - docker-compose

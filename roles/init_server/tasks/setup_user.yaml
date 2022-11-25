@@ -1,0 +1,32 @@
+---
+- name: Create new user
+  ansible.builtin.user:
+    name: "{{ user }}"
+    shell: /bin/bash
+    groups: sudo
+    append: true
+
+- name: Create .ssh directory for new user
+  ansible.builtin.file:
+    path: /home/{{ user }}/.ssh
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: '0700'
+
+- name: Copy authorized_keys for new user
+  ansible.builtin.copy:
+    remote_src: true
+    src: /root/.ssh/authorized_keys
+    dest: /home/{{ user }}/.ssh/authorized_keys
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: '0600'
+
+- name: Create folder for project
+  ansible.builtin.file:
+    path: /home/{{ user }}/site
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: '0700'

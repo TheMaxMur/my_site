@@ -1,0 +1,18 @@
+---
+- name: Docker pull images
+  ansible.builtin.shell: >
+    NGINX_IMAGE={{ nginx_image }}
+    docker-compose pull
+  args:
+    chdir: "{{ docker_path }}"
+  register: pull_output
+  changed_when: false
+
+- name: Docker compose up
+  ansible.builtin.shell: >
+    NGINX_IMAGE={{ nginx_image }}
+    docker-compose up -d
+  args:
+    chdir: "{{ docker_path }}"
+  register: up_output
+  changed_when: false

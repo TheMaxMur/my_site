@@ -1,6 +1,6 @@
 server {
     listen 80;
-    server_name maxmur.info;
+    server_name {{ domain }};
     server_tokens off;
 
     location /.well-known/acme-challenge/ {
@@ -14,14 +14,16 @@ server {
 
 server {
     listen 443 ssl;
-    server_name maxmur.info;
+    server_name {{ domain }};
     server_tokens off;
 
-    ssl_certificate /etc/letsencrypt/live/maxmur.info/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/maxmur.info/privkey.pem;
-    include /etc/letsencrypt/options-ssl-nginx.conf;
+    include /etc/nginx/options-ssl-nginx.conf;
+    
+    ssl_certificate /etc/letsencrypt/live/{{ domain }}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{ domain }}/privkey.pem;
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
-    root /static;
+
+    root /app;
     index index.html;
 
     location / {

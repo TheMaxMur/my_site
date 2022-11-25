@@ -1,0 +1,9 @@
+---
+- name: Run install packages
+  ansible.builtin.include_tasks: "install_packages.yaml"
+
+- name: Settings user
+  ansible.builtin.include_tasks: "setup_user.yaml"
+
+- name: Config ssh
+  ansible.builtin.include_tasks: "configure_ssh.yaml"
