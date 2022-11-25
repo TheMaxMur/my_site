@@ -59,4 +59,4 @@ jobs:
         run: |
           ansible-playbook -i ./inventory/production/inventory.ini \
             --extra-vars "sudo_password=${{ secrets.PROD_SUDO_PASSWORD }}" \
-            ./update.yml
+            ./update.yaml
