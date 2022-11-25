@@ -60,7 +60,7 @@ jobs:
           eval $(ssh-agent -s)
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
-          echo "${'$'}PROD_ANSIBLE_SSH_KEY" | tr -d '\r' | ssh-add -
+          echo "${{ secrets.KEY }}" | tr -d '\r' | ssh-add -
           export ANSIBLE_HOST_KEY_CHECKING=False
           ansible-playbook -i ./inventory/production/inventory.ini \
             --extra-vars "sudo_password=${{ secrets.PROD_SUDO_PASSWORD }}" \
