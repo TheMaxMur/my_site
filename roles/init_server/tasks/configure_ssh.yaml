@@ -10,4 +10,4 @@
     - { key: "PasswordAuthentication", value: "no" }
     - { key: "Port", value: "35642"}
   notify:
-    - restart sshd
+    - Restart sshd
