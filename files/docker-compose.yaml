@@ -2,6 +2,7 @@ version: "3"
 services:
   nginx:
     image: ${NGINX_IMAGE:-maxmur/my_site:local}
+    container_name: nginx
     ports:
       - "80:80"
       - "443:443"
@@ -21,6 +22,7 @@ services:
 
   certbot:
     image: certbot/certbot
+    container_name: certbot
     volumes:
       - letsencrypt_cert:/etc/letsencrypt
       - letsencrypt_data:/var/www/certbot
