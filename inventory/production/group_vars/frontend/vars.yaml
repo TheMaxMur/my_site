@@ -22,7 +22,7 @@ links:
     title: Gitlab
     icon: "fab fa-gitlab"
   - name: telegram
-    link: "https://t.me/the_maxmur"
+    link: "https://t.me/maxmur"
     title: Telegram
     icon: "fab fa-telegram-plane"
   - name: email
