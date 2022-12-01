@@ -72,7 +72,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    needs: [build, oss]
+    needs: [build]
 
     steps:
       - name: Download source code
