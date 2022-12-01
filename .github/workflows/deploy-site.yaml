@@ -6,7 +6,7 @@ on:
 
 jobs:
   checking_code:
-    name: horusec-security
+    name: SAST
 
     runs-on: ubuntu-latest
 
