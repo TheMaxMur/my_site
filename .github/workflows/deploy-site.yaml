@@ -6,18 +6,18 @@ on:
 
 jobs:
   checking_code:
+    name: horusec-security
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download source code
-        uses: actions/checkout@v2
+    - name: Check out code
+      uses: actions/checkout@v2
 
-      - name: Run SAST
-        id: run_horusec
-
-        uses: fike/horusec-action@v0.1
-        with:
-          arguments: -p="./"
+    - name: Running Horusec Security
+      run: |
+        curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
+        horusec start -p="./" -e="true"    
 
   build:
     runs-on: ubuntu-latest
