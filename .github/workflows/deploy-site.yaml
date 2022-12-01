@@ -20,6 +20,9 @@ jobs:
 
       - name: Build image
         run: |
+          ansible all -i "localhost," --connection=local \
+            -m template -a "src=templates/index.html.j2 dest=maxmur/index.html" \
+            --extra-vars="@./inventory/production/group_vars/frontend/vars.yaml"
           docker build -t maxmur/my_site:local -f files/Dockerfiles/Nginx/Dockerfile .
           docker push maxmur/my_site:local
           ansible all -i "localhost," --connection=local \

@@ -1,3 +1,30 @@
+# Server vars
 domain: maxmur.info
 miigaik_domain: oalsoic.maxmur.info
 server_folder: /home/maxmur/site/
+# Index.html vars
+title: maxmur
+author: maxmur
+icon: img/maxmur_black.png
+description: MaxMur cutaway
+avatar: img/avatar.gif
+header1: maxmur
+header2: Maxim Muravev
+header3: Student / Beginner DevOps
+links:
+  - name: vk
+    link: "https://vk.com/the_maxmur"
+    title: Vk
+    icon: "fab fa-vk"
+  - name: telegram
+    link: "https://t.me/the_maxmur"
+    title: Telegram
+    icon: "fab fa-telegram-plane"
+  - name: github
+    link: "https://github.com/themaxmur"
+    title: Github
+    icon: "fab fa-github"
+  - name: gitlab
+    link: "https://gitlab.com/themaxmur"
+    title: Gitlab
+    icon: "fab fa-gitlab"
