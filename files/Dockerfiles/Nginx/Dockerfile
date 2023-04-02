@@ -1,9 +1,9 @@
 FROM nginx:1.23.2-alpine
 
-COPY ./files/data/nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY ./files/data/nginx/nginx.conf /etc/nginx/nginx.conf
-COPY ./files/data/certbot/options-ssl-nginx.conf /etc/nginx/options-ssl-nginx.conf
-COPY ./maxmur /app
+COPY ./data/nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY ./data/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./data/certbot/options-ssl-nginx.conf /etc/nginx/options-ssl-nginx.conf
+COPY ./sources /app
 
 RUN chown -R nginx:nginx /var/cache/nginx && \
     chown -R nginx:nginx /var/log/nginx && \
