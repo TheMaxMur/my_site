@@ -9,8 +9,7 @@ RUN chown -R nginx:nginx /var/cache/nginx && \
     chown -R nginx:nginx /var/log/nginx && \
     chown -R nginx:nginx /etc/nginx/
 
-USER nginx
-
 EXPOSE 80/tcp
 
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+
