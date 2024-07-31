@@ -10,7 +10,7 @@ avatar: img/avatar.gif
 avatar_alt: maxmur
 header1: maxmur
 header2: Maxim Muravev
-header3: Student / Junior DevOps
+header3: Bachelor / DevOps
 links:
   - name: github
     link: "https://github.com/themaxmur"
@@ -25,6 +25,6 @@ links:
     title: Telegram
     icon: "fab fa-telegram-plane"
   - name: email
-    link: "mailto:admin@maxmur.info"
+    link: "mailto:muravjev.mak@yandex.ru"
     title: Email
     icon: "fa fa-envelope"
