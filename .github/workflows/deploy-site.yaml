@@ -79,7 +79,7 @@ jobs:
       - name: Healthcheck container
         run: |
           docker network prune --force
-          docker-compose -f files/docker-compose.yaml up -d
+          docker compose -f files/docker-compose.yaml up -d
           sleep 10
           curl http://localhost
 
