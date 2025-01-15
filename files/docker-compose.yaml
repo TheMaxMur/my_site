@@ -9,6 +9,7 @@ services:
     volumes:
       - letsencrypt_cert:/etc/letsencrypt
       - letsencrypt_data:/var/www/certbot
+      - /home/maxmur/miigaik_2024_network/public:/network
     restart: "always"
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     healthcheck:
