@@ -5,4 +5,4 @@
     - role: deploy_project
       become: true
       vars:
-        - ansible_sudo_pass: "{{ sudo_password }}"
+        ansible_sudo_pass: "{{ sudo_password }}"
